@@ -1,8 +1,3 @@
-soemthing specidfic 
-
-thoguht 
-
-employment bios on south indians in canada
 
 
 teenagers biased to not geting job in canada
