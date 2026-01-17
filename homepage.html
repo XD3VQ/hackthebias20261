@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hackathon Project</title>
+  <title>Tonfatalent hub</title>
 
   <!-- Pico.css -->
   <link
@@ -14,27 +14,23 @@
 <body>
 
   <main class="container">
-    <h1>My Hackathon Project</h1>
-    <p>
-      Built fast. Styled for free. Zero CSS stress.
-    </p>
-
-    <section>
-      <h2>What this does</h2>
-      <p>
-        Explain your project here before the judges ask awkward questions.
-      </p>
-    </section>
+    <h1>Tonfatalent hub</h1>
+  </br> <h3>Your gateway to talent management</h3>
 
     <section>
       <h2>Try it</h2>
-      <button id="testBtn">Click me</button>
+      <button id="student">I'm a Teen</button>
+    </br>
+      <button id="recruiter">I'm an Recruiter</button>
     </section>
   </main>
 
   <script>
-    document.getElementById("testBtn").addEventListener("click", () => {
-      alert("Pico.css is carrying this project.");
+    document.getElementById("student").addEventListener("click", () => {
+      location.href = "student_login.html";
+    });
+    document.getElementById("recruiter").addEventListener("click", () => {
+      location.href = "recruiter_login.html";
     });
   </script>
 
