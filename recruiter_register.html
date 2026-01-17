@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recruiter Registration - Tonfa Talent Hub</title>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+  />
+</head>
+
+<body>
+<main class="container">
+  <h1>Recruiter Registration</h1>
+  <p>Verified recruiters only. This helps keep teenagers safe.</p>
+
+  <form id="registerForm">
+    <label>
+      Organization Name
+      <input type="text" required>
+    </label>
+
+    <label>
+      Full Name
+      <input type="text" required>
+    </label>
+
+    <label>
+      Work Email
+      <input type="email" required>
+    </label>
+
+    <label>
+      Organization Type
+      <select required>
+        <option value="">Select one</option>
+        <option>Business</option>
+        <option>Non-profit</option>
+        <option>Government</option>
+        <option>School</option>
+      </select>
+    </label>
+
+    <label>
+      Password
+      <input type="password" required>
+    </label>
+
+    <label>
+      <input type="checkbox" required>
+      I confirm I am legally authorized to recruit on behalf of this organization
+    </label>
+
+    <button type="submit">Register</button>
+  </form>
+  <br>
+  <button type="button" onclick="history.back()" style="background: transparent; border: 2px solid #0a66c2; color: #0a66c2; padding: 0.7rem 1.25rem; border-radius: 24px; cursor: pointer;">← Back</button>
+</main>
+
+<script>
+  document.getElementById("registerForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    alert("Registration submitted. Recruiter verification pending.");
+    location.href = "recruiter_login.html";
+  });
+</script>
+
+</body>
+</html>

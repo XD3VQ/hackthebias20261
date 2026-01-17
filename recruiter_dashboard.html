@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Recruiter Dashboard - Tonfa Talent Hub</title>
+  <style>
+    :root {
+      --primary: #0a66c2;
+      --primary-hover: #004182;
+      --bg-dark: #1b1f23;
+      --bg-card: #1d2226;
+      --text-primary: #ffffff;
+      --text-secondary: #b0b0b0;
+      --border-color: #38434f;
+      --success: #057642;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      color: var(--primary);
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .welcome {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .welcome .check {
+      color: var(--success);
+    }
+
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    .filters {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .filters h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .filter-row {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-row select {
+      background-color: var(--bg-dark);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 0.6rem 1rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      min-width: 140px;
+    }
+
+    .filter-row select:hover {
+      border-color: var(--primary);
+    }
+
+    .filter-row select:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .student-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .student-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+
+    .student-name {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .verified-hours {
+      background-color: rgba(10, 102, 194, 0.15);
+      color: var(--primary);
+      padding: 0.4rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .testimonial {
+      background-color: var(--bg-dark);
+      border-left: 3px solid var(--primary);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .testimonial-quote {
+      font-style: italic;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .testimonial-author {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+    }
+
+    .availability-section {
+      margin-bottom: 1.25rem;
+    }
+
+    .availability-label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .availability-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .availability-tag {
+      background-color: var(--bg-dark);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 0.35rem 0.7rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.7rem 1.25rem;
+      border-radius: 24px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .btn-outline:hover {
+      background-color: rgba(10, 102, 194, 0.1);
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+    }
+
+    .back-button-container {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+      }
+
+      .filter-row select {
+        width: 100%;
+      }
+
+      .card-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Tonfa Talent Hub</div>
+    <div class="welcome">Welcome, Recruiter <span class="check">✔</span></div>
+  </header>
+
+  <main>
+    <section class="filters">
+      <h2>Filter Students</h2>
+      <div class="filter-row">
+        <select id="availability-filter">
+          <option value="">Availability ▼</option>
+          <option value="weekday">Weekdays</option>
+          <option value="weekend">Weekends</option>
+          <option value="evening">Evenings</option>
+        </select>
+        <select id="hours-filter">
+          <option value="">Min Hours ▼</option>
+          <option value="50">50+ hours</option>
+          <option value="100">100+ hours</option>
+          <option value="200">200+ hours</option>
+        </select>
+        <select id="skills-filter">
+          <option value="">Skills ▼</option>
+          <option value="communication">Communication</option>
+          <option value="teamwork">Teamwork</option>
+          <option value="leadership">Leadership</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="students-list">
+      <article class="student-card">
+        <div class="student-header">
+          <h3 class="student-name">Alex Chen, 17</h3>
+          <span class="verified-hours">312 VERIFIED HOURS</span>
+        </div>
+        <div class="testimonial">
+          <p class="testimonial-quote">"Reliable, consistent, great attitude."</p>
+          <p class="testimonial-author">— YMCA Supervisor</p>
+        </div>
+        <div class="availability-section">
+          <p class="availability-label">Availability:</p>
+          <div class="availability-tags">
+            <span class="availability-tag">Mon 4–7pm</span>
+            <span class="availability-tag">Wed 5–8pm</span>
+            <span class="availability-tag">Sat 10–2pm</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-outline">View Profile</button>
+          <button class="btn btn-primary">Invite to Interview</button>
+        </div>
+      </article>
+
+      <article class="student-card">
+        <div class="student-header">
+          <h3 class="student-name">Jamie Patel, 16</h3>
+          <span class="verified-hours">180 VERIFIED HOURS</span>
+        </div>
+        <div class="testimonial">
+          <p class="testimonial-quote">"Strong teamwork and communication."</p>
+          <p class="testimonial-author">— Library Supervisor</p>
+        </div>
+        <div class="availability-section">
+          <p class="availability-label">Availability:</p>
+          <div class="availability-tags">
+            <span class="availability-tag">Tue 4–6pm</span>
+            <span class="availability-tag">Thu 4–7pm</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-outline">View Profile</button>
+          <button class="btn btn-primary">Invite to Interview</button>
+        </div>
+      </article>
+    </section>
+
+    <div class="back-button-container">
+      <button class="btn btn-outline" onclick="history.back()">← Back</button>
+    </div>
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Dashboard - Tonfa Talent Hub</title>
+  <style>
+    :root {
+      --primary: #0a66c2;
+      --primary-hover: #004182;
+      --bg-dark: #1b1f23;
+      --bg-card: #1d2226;
+      --text-primary: #ffffff;
+      --text-secondary: #b0b0b0;
+      --border-color: #38434f;
+      --success: #057642;
+      --accent: #f5c518;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      color: var(--primary);
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .welcome {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .stat-number.gold {
+      color: var(--accent);
+    }
+
+    .stat-label {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-top: 0.25rem;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .availability-section {
+      margin-bottom: 2rem;
+    }
+
+    .availability-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .availability-tag {
+      background-color: var(--bg-dark);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+
+    .opportunity-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .opportunity-info h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .opportunity-info p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .opportunity-meta {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .badge {
+      background-color: rgba(10, 102, 194, 0.15);
+      color: var(--primary);
+      padding: 0.3rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .badge.pending {
+      background-color: rgba(245, 197, 24, 0.15);
+      color: var(--accent);
+    }
+
+    .badge.confirmed {
+      background-color: rgba(5, 118, 66, 0.15);
+      color: var(--success);
+    }
+
+    .btn {
+      padding: 0.6rem 1.25rem;
+      border-radius: 24px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .btn-outline:hover {
+      background-color: rgba(10, 102, 194, 0.1);
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+    }
+
+    .interviews-section {
+      margin-bottom: 2rem;
+    }
+
+    .interview-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .back-button-container {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+      }
+
+      .opportunity-card,
+      .interview-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Tonfa Talent Hub</div>
+    <div class="welcome">Welcome back, Alex!</div>
+  </header>
+
+  <main>
+    <section class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">312</div>
+        <div class="stat-label">Verified Hours</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">8</div>
+        <div class="stat-label">Organizations</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number gold">3</div>
+        <div class="stat-label">Pending Invites</div>
+      </div>
+    </section>
+
+    <section class="availability-section">
+      <h2 class="section-title">My Availability</h2>
+      <div class="card">
+        <div class="availability-grid">
+          <span class="availability-tag">Mon 4–7pm</span>
+          <span class="availability-tag">Wed 5–8pm</span>
+          <span class="availability-tag">Sat 10am–2pm</span>
+        </div>
+        <br>
+        <button class="btn btn-outline">Edit Availability</button>
+      </div>
+    </section>
+
+    <section class="interviews-section">
+      <h2 class="section-title">Interview Invites</h2>
+
+      <div class="card interview-card">
+        <div class="opportunity-info">
+          <h3>City Library</h3>
+          <p>Library Assistant · Sat 11am</p>
+        </div>
+        <div class="opportunity-meta">
+          <span class="badge pending">Pending Response</span>
+          <button class="btn btn-primary">Accept</button>
+          <button class="btn btn-outline">Decline</button>
+        </div>
+      </div>
+
+      <div class="card interview-card">
+        <div class="opportunity-info">
+          <h3>YMCA Downtown</h3>
+          <p>Youth Coach · Wed 5pm</p>
+        </div>
+        <div class="opportunity-meta">
+          <span class="badge confirmed">Confirmed</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="opportunities-section">
+      <h2 class="section-title">Recommended Opportunities</h2>
+
+      <div class="card opportunity-card">
+        <div class="opportunity-info">
+          <h3>Food Bank Volunteer</h3>
+          <p>Community Food Bank · Weekends</p>
+        </div>
+        <div class="opportunity-meta">
+          <span class="badge">+5 hrs/week</span>
+          <button class="btn btn-outline">View Details</button>
+        </div>
+      </div>
+
+      <div class="card opportunity-card">
+        <div class="opportunity-info">
+          <h3>Tutoring Assistant</h3>
+          <p>Local Elementary School · Tue/Thu</p>
+        </div>
+        <div class="opportunity-meta">
+          <span class="badge">+4 hrs/week</span>
+          <button class="btn btn-outline">View Details</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="back-button-container">
+      <button class="btn btn-outline" onclick="history.back()">← Back</button>
+    </div>
+  </main>
+
+</body>
+</html>
