@@ -21,17 +21,37 @@
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required />
     
-        <button type="submitrec">Login</button>
+        <button type="submit" id = "loginBtn">Login</button>
+        <button type="button" id ="registerBtn">create a new account/Register</button>
 
-        <button type="newregisterrec">create a new account/Register</button>
         </form>
     </main>
     <script>
-    document.getElementById("submiterec").addEventListener("click", () => {
-      location.href = "student_login.html";
+        fetch('Database.json')
+        //getting json and checking withteh current user stuff chat
+    .then(response => response.json())
+    .then(users => {    
+        document.getElementById("loginBtn").addEventListener("click", (e) => {
+            e.preventDefault();
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            const user = users.find(user => user.email === email && user.password === password);
+            if (user) {
+                alert("Login successful!");
+                // Redirect to recruiter dashboard or another page
+                location.href = "recruiter_dashboard.html";
+            } else {
+                alert("Invalid email or password. Please try again.");
+            }
+      
+
     });
-    document.getElementById("recruiter").addEventListener("click", () => {
-      location.href = "recruiter_login.html";
+        
+    })
+    
+    document.getElementById("registerBtn").addEventListener("click", () => {
+      location.href = "recruiter_register.html";
     });
   </script>
 
