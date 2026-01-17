@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hackathon Project</title>
+
+  <!-- Pico.css -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+  />
+</head>
+<body>
+
+  <main class="container">
+    <h1>My Hackathon Project</h1>
+    <p>
+      Built fast. Styled for free. Zero CSS stress.
+    </p>
+
+    <section>
+      <h2>What this does</h2>
+      <p>
+        Explain your project here before the judges ask awkward questions.
+      </p>
+    </section>
+
+    <section>
+      <h2>Try it</h2>
+      <button id="testBtn">Click me</button>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById("testBtn").addEventListener("click", () => {
+      alert("Pico.css is carrying this project.");
+    });
+  </script>
+
+</body>
+</html>
