@@ -135,6 +135,45 @@
     .btn-back {
       margin-top: 1rem;
     }
+
+    .verification-section {
+      background-color: var(--bg-dark);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin-top: 0.5rem;
+    }
+
+    .verification-section h3 {
+      color: var(--primary);
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .verification-section .hint {
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .verify-option {
+      margin-bottom: 0.75rem;
+    }
+
+    .verify-option label {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+    }
+
+    .verify-option input[type="checkbox"] {
+      width: auto;
+      margin-right: 0.5rem;
+    }
+
+    .verify-option input[type="file"] {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+    }
   </style>
 </head>
 <body>
@@ -180,6 +219,26 @@
       <div>
         <label for="password">Password</label>
         <input type="password" id="password" required placeholder="••••••••" />
+      </div>
+
+      <div class="verification-section">
+        <h3>Verification Options</h3>
+        <p class="hint">Complete at least one to get verified status</p>
+
+        <div class="verify-option">
+          <input type="checkbox" id="schoolEmail" />
+          <label for="schoolEmail">Use school email (.edu) for verification</label>
+        </div>
+
+        <div class="verify-option">
+          <input type="checkbox" id="parentalApproval" />
+          <label for="parentalApproval">Request parental approval via email</label>
+        </div>
+
+        <div class="verify-option">
+          <label for="docUpload">Upload verification document (school ID, permission slip)</label>
+          <input type="file" id="docUpload" accept=".pdf,.jpg,.png" />
+        </div>
       </div>
 
       <div class="checkbox-group">
